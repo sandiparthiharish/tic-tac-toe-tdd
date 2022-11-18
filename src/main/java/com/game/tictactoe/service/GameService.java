@@ -32,13 +32,17 @@ public class GameService {
     private String validateGameAndSendResponse(Player player) {
 
         if (isGameOver()) {
-            previousPlayer = INITIAL_VALUE;
-            gameBoard.initialize();
+            resetGameBoard();
             return String.format("Player %s won the game", player.getValue());
         } else if (gameBoard.isBoardFull()) {
             return "Game is a Tie";
         }
         return "Successful Move";
+    }
+
+    private void resetGameBoard() {
+        previousPlayer = INITIAL_VALUE;
+        gameBoard.initialize();
     }
 
     private boolean isGameOver() {
