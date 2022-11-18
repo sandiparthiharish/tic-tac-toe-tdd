@@ -21,9 +21,13 @@ public class GameService {
             if (gameBoard.savePlayerOnPosition(player, row, column) == player.getValue()) {
                 message = "Successful Move";
             }
-        } else if (player == Player.O) {
+        } else if (isPlayerO(player)) {
             throw new InvalidTurnException("Player X should move first");
         }
         return message;
+    }
+
+    private boolean isPlayerO(Player player) {
+        return player == Player.O;
     }
 }
