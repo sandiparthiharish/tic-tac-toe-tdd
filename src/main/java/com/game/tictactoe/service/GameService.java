@@ -26,7 +26,7 @@ public class GameService {
         } else if (isFirstTurn() && isPlayerO(player)) {
             throw new InvalidTurnException("Player X should move first");
         } else if (isSamePlayerPlaying(player)) {
-            message = "Other player should play the game";
+            throw new InvalidTurnException(String.format("Player %s's turn now", player.getValue()));
         }
         if (gameBoard.savePlayerOnPosition(player, Position.getRowColumnValueOfPosition(position)) == player.getValue()) {
             previousPlayer = player.getValue();

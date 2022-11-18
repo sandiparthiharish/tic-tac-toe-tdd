@@ -54,4 +54,11 @@ public class GameServiceTests {
 
         gameService.playGame(Player.X, 0);
     }
+
+    @Test(expected = InvalidTurnException.class)
+    public void shouldThrowInvalidTurnExceptionWhenSamePlayerPlaysConsecutiveTurns() {
+
+        gameService.playGame(Player.X, 1);
+        gameService.playGame(Player.X, 2);
+    }
 }
