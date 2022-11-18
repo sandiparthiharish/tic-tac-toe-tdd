@@ -28,6 +28,11 @@ public class GameBoard {
         return isFirstColumnOccupiedBySamePlayer() || isSecondColumnOccupiedBySamePlayer() || isThirdColumnOccupiedBySamePlayer();
     }
 
+    public boolean isAnyDiagonalOccupiedBySamePlayer() {
+
+        return isFirstDiagonalOccupiedBySamePlayer() || isSecondDiagonalOccupiedBySamePlayer();
+    }
+
     private boolean isFirstRowOccupiedBySamePlayer() {
 
         if (getPositionValueOnBoard(Position.ONE) != EMPTY_POSITION_ON_BOARD) {
@@ -82,7 +87,7 @@ public class GameBoard {
         return false;
     }
 
-    public boolean isFirstDiagonalOccupiedBySamePlayer() {
+    private boolean isFirstDiagonalOccupiedBySamePlayer() {
 
         if (getPositionValueOnBoard(Position.ONE) != EMPTY_POSITION_ON_BOARD) {
             return (getPositionValueOnBoard(Position.ONE) == getPositionValueOnBoard(Position.FIVE) &&
@@ -91,7 +96,7 @@ public class GameBoard {
         return false;
     }
 
-    public boolean isSecondDiagonalOccupiedBySamePlayer() {
+    private boolean isSecondDiagonalOccupiedBySamePlayer() {
 
         if (getPositionValueOnBoard(Position.THREE) != EMPTY_POSITION_ON_BOARD) {
             return (getPositionValueOnBoard(Position.THREE) == getPositionValueOnBoard(Position.FIVE) &&
