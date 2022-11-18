@@ -47,10 +47,14 @@ public class GameService {
         } else if (isFirstTurn() && isPlayerO(player)) {
             throw new InvalidTurnException("Player X should move first");
         } else if (isSamePlayerPlaying(player)) {
-            throw new InvalidTurnException(String.format("Player %s's turn now", player.getValue()));
+            throw new InvalidTurnException(String.format("Player %s's turn now", getNextPlayer(player)));
         } else if (gameBoard.getPositionValueOnBoard(Position.getRowColumnValueOfPosition(position)) != INITIAL_VALUE) {
             throw new PositionAlreadyOccupiedException(String.format("Input position %s is already occupied", position));
         }
+    }
+
+    private Character getNextPlayer(Player player) {
+        return player == Player.X ? Player.O.getValue() : Player.X.getValue();
     }
 
     private boolean isInValidPosition(int position) {
