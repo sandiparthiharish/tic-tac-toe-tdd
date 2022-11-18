@@ -21,10 +21,14 @@ public class GameService {
     public String playGame(Player player, int position) {
 
         validateCurrentTurn(player, position);
+        saveCurrentTurn(player, position);
+        return "Successful Move";
+    }
+
+    private void saveCurrentTurn(Player player, int position) {
         if (gameBoard.savePlayerOnPosition(player, Position.getRowColumnValueOfPosition(position)) == player.getValue()) {
             previousPlayer = player.getValue();
         }
-        return "Successful Move";
     }
 
     private void validateCurrentTurn(Player player, int position) {
