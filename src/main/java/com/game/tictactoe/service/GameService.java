@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class GameService {
 
+    private static final int INITIAL_VALUE = 0;
     private final GameBoard gameBoard;
+    private char previousPlayer;
 
     public GameService(GameBoard gameBoard) {
         this.gameBoard = gameBoard;
@@ -17,14 +19,17 @@ public class GameService {
     public String playGame(Player player, int row, int column) {
 
         String message = "Unsuccessful Move";
-        if (player == Player.X) {
-            if (gameBoard.savePlayerOnPosition(player, row, column) == player.getValue()) {
-                message = "Successful Move";
-            }
-        } else if (isPlayerO(player)) {
+        if (isFirstTurn() && isPlayerO(player)) {
             throw new InvalidTurnException("Player X should move first");
         }
+        if (gameBoard.savePlayerOnPosition(player, row, column) == player.getValue()) {
+            message = "Successful Move";
+        }
         return message;
+    }
+
+    private boolean isFirstTurn() {
+        return previousPlayer == INITIAL_VALUE;
     }
 
     private boolean isPlayerO(Player player) {
