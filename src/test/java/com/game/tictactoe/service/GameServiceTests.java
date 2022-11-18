@@ -39,4 +39,12 @@ public class GameServiceTests {
 
         assertThat(gameService.playGame(Player.X, 0, 2)).isEqualTo("Successful Move");
     }
+
+    @Test
+    public void playersShouldPlayAlternateTurns() {
+
+        gameService.playGame(Player.X, 0, 2);
+
+        assertThat(gameService.playGame(Player.O, 0, 1)).isEqualTo("Successful Move");
+    }
 }
