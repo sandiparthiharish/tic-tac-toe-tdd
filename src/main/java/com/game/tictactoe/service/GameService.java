@@ -21,6 +21,9 @@ public class GameService {
 
     public String playGame(Player player, int position) {
 
+        if (isFirstTurn()) {
+            gameBoard.initialize();
+        }
         validateCurrentTurn(player, position);
         saveCurrentTurn(player, position);
         return validateGameAndSendResponse(player);
@@ -29,6 +32,8 @@ public class GameService {
     private String validateGameAndSendResponse(Player player) {
 
         if (isGameOver()) {
+            previousPlayer = INITIAL_VALUE;
+            gameBoard.initialize();
             return String.format("Player %s won the game", player.getValue());
         } else if (gameBoard.isBoardFull()) {
             return "Game is a Tie";

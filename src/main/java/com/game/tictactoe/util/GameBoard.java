@@ -12,7 +12,11 @@ public class GameBoard {
 
     private static final int EMPTY_POSITION_ON_BOARD = 0;
     public static final int TOTAL_POSITIONS_ON_BOARD = 9;
-    private final char[][] board = new char[3][3];
+    private char[][] board;
+
+    public void initialize() {
+        board = new char[3][3];
+    }
 
     public char savePlayerOnPosition(Player player, Position position) {
         return board[position.getRow()][position.getColumn()] = player.getValue();
