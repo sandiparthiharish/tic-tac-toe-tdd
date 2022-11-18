@@ -3,6 +3,7 @@ package com.game.tictactoe.service;
 import com.game.tictactoe.domain.Player;
 import com.game.tictactoe.exception.InvalidPositionException;
 import com.game.tictactoe.exception.InvalidTurnException;
+import com.game.tictactoe.exception.PositionAlreadyOccupiedException;
 import com.game.tictactoe.util.GameBoard;
 import org.junit.Before;
 import org.junit.Test;
@@ -60,5 +61,12 @@ public class GameServiceTests {
 
         gameService.playGame(Player.X, 1);
         gameService.playGame(Player.X, 2);
+    }
+
+    @Test(expected = PositionAlreadyOccupiedException.class)
+    public void shouldThrowPositionAlreadyOccupiedExceptionWhenPlayerPlaysOnOccupiedPosition() {
+
+        gameService.playGame(Player.X, 3);
+        gameService.playGame(Player.O, 3);
     }
 }
