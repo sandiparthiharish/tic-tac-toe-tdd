@@ -25,6 +25,8 @@ public class GameService {
         saveCurrentTurn(player, position);
         if (isGameOver()) {
             return String.format("Player %s won the game", player.getValue());
+        } else if (gameBoard.isBoardFull()) {
+            return "Game is a Tie";
         }
         return "Successful Move";
     }
