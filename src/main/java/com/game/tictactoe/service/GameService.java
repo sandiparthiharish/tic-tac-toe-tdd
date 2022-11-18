@@ -21,7 +21,7 @@ public class GameService {
     public String playGame(Player player, int position) {
 
         String message = "Unsuccessful Move";
-        if (Position.getRowColumnValueOfPosition(position) == Position.DEFAULT) {
+        if (isInValidPosition(position)) {
             throw new InvalidPositionException("Invalid Position. Please choose position value between 1 to 9");
         } else if (isFirstTurn() && isPlayerO(player)) {
             throw new InvalidTurnException("Player X should move first");
@@ -33,6 +33,10 @@ public class GameService {
             message = "Successful Move";
         }
         return message;
+    }
+
+    private boolean isInValidPosition(int position) {
+        return Position.getRowColumnValueOfPosition(position) == Position.DEFAULT;
     }
 
     private boolean isSamePlayerPlaying(Player player) {
