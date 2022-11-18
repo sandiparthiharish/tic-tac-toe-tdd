@@ -114,4 +114,15 @@ public class GameServiceTests {
 
         assertThat(gameService.playGame(Player.X, 7)).isEqualTo("Player X won the game");
     }
+
+    @Test
+    public void shouldDeclareWinnerIfAllPositionsInSecondColumnAreFilledBySamePlayer() {
+
+        gameService.playGame(Player.X, 2);
+        gameService.playGame(Player.O, 4);
+        gameService.playGame(Player.X, 5);
+        gameService.playGame(Player.O, 1);
+
+        assertThat(gameService.playGame(Player.X, 8)).isEqualTo("Player X won the game");
+    }
 }

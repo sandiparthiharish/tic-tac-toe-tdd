@@ -58,4 +58,13 @@ public class GameBoard {
         }
         return false;
     }
+
+    public boolean isSecondColumnOccupiedBySamePlayer() {
+
+        if (getPositionValueOnBoard(Position.TWO) != EMPTY_POSITION_ON_BOARD) {
+            return (getPositionValueOnBoard(Position.TWO) == getPositionValueOnBoard(Position.FIVE) &&
+                    getPositionValueOnBoard(Position.FIVE) == getPositionValueOnBoard(Position.EIGHT));
+        }
+        return false;
+    }
 }
