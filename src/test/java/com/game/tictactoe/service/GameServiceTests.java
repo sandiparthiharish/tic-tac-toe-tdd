@@ -92,4 +92,15 @@ public class GameServiceTests {
 
         assertThat(gameService.playGame(Player.O, 6)).isEqualTo("Player O won the game");
     }
+
+    @Test
+    public void shouldDeclareWinnerIfAllPositionsInThirdRowAreFilledBySamePlayer() {
+
+        gameService.playGame(Player.X, 7);
+        gameService.playGame(Player.O, 4);
+        gameService.playGame(Player.X, 8);
+        gameService.playGame(Player.O, 5);
+
+        assertThat(gameService.playGame(Player.X, 9)).isEqualTo("Player X won the game");
+    }
 }
