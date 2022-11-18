@@ -1,5 +1,6 @@
 package com.game.tictactoe.exception;
 
+import com.game.tictactoe.domain.GameErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -11,8 +12,9 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value = {InvalidTurnException.class, InvalidPositionException.class,
             PositionAlreadyOccupiedException.class})
-    public ResponseEntity<String> handleException(RuntimeException ex) {
+    public ResponseEntity<GameErrorResponse> handleException(RuntimeException ex) {
 
-        return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
+        GameErrorResponse errorResponse = new GameErrorResponse(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
     }
 }
