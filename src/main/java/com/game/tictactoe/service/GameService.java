@@ -23,7 +23,8 @@ public class GameService {
 
         validateCurrentTurn(player, position);
         saveCurrentTurn(player, position);
-        if (gameBoard.isAnyRowOccupiedBySamePlayer() || gameBoard.isAnyColumnOccupiedBySamePlayer()) {
+        if (gameBoard.isAnyRowOccupiedBySamePlayer() || gameBoard.isAnyColumnOccupiedBySamePlayer()
+                || gameBoard.isFirstDiagonalOccupiedBySamePlayer()) {
             return String.format("Player %s won the game", player.getValue());
         }
         return "Successful Move";
