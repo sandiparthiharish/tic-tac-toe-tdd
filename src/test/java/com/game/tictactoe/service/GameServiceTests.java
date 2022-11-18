@@ -1,6 +1,7 @@
 package com.game.tictactoe.service;
 
 import com.game.tictactoe.domain.Player;
+import com.game.tictactoe.exception.InvalidTurnException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -18,11 +19,11 @@ public class GameServiceTests {
         assertThat(gameService.playGame(Player.X)).isEqualTo("Successful Move");
     }
 
-    @Test
+    @Test(expected = InvalidTurnException.class)
     public void isPlayerOMovingFirst() {
 
         GameService gameService = new GameService();
 
-        assertThat(gameService.playGame(Player.O)).isEqualTo("Player X should move first");
+        gameService.playGame(Player.O);
     }
 }
