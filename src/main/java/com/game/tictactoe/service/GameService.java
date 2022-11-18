@@ -23,7 +23,7 @@ public class GameService {
 
         validateCurrentTurn(player, position);
         saveCurrentTurn(player, position);
-        if (gameBoard.isFirstRowOccupiedBySamePlayer()) {
+        if (gameBoard.isFirstRowOccupiedBySamePlayer() || gameBoard.isSecondRowOccupiedBySamePlayer()) {
             return String.format("Player %s won the game", player.getValue());
         }
         return "Successful Move";
