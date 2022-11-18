@@ -25,26 +25,26 @@ public class GameServiceTests {
     @Test
     public void xShouldAlwaysMoveFirst() {
 
-        assertThat(gameService.playGame(Player.X, 0, 1)).isEqualTo("Successful Move");
+        assertThat(gameService.playGame(Player.X, 2)).isEqualTo("Successful Move");
     }
 
     @Test(expected = InvalidTurnException.class)
     public void isPlayerOMovingFirst() {
 
-        gameService.playGame(Player.O, 0, 0);
+        gameService.playGame(Player.O, 1);
     }
 
     @Test
     public void savePositionOnBoard() {
 
-        assertThat(gameService.playGame(Player.X, 0, 2)).isEqualTo("Successful Move");
+        assertThat(gameService.playGame(Player.X, 2)).isEqualTo("Successful Move");
     }
 
     @Test
     public void playersShouldPlayAlternateTurns() {
 
-        gameService.playGame(Player.X, 0, 2);
+        gameService.playGame(Player.X, 2);
 
-        assertThat(gameService.playGame(Player.O, 0, 1)).isEqualTo("Successful Move");
+        assertThat(gameService.playGame(Player.O, 1)).isEqualTo("Successful Move");
     }
 }

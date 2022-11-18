@@ -27,9 +27,9 @@ public class GameControllerTests {
     @Test
     public void playGameHandler_APIFound() throws Exception {
 
-        Mockito.when(gameService.playGame(Player.X, 0, 1)).thenReturn("Successful Move");
+        Mockito.when(gameService.playGame(Player.X, 1)).thenReturn("Successful Move");
 
-        mvc.perform(post("/tic-tac-toe/play/{player}/{row}/{column}", Player.X, 0, 1))
+        mvc.perform(post("/tic-tac-toe/play/{player}/{position}", Player.X, 1))
                 .andExpect(status().isOk());
     }
 }
