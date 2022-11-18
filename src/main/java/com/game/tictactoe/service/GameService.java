@@ -20,7 +20,15 @@ public class GameService {
 
     public String playGame(Player player, int position) {
 
-        String message = "Unsuccessful Move";
+        validateCurrentTurn(player, position);
+        if (gameBoard.savePlayerOnPosition(player, Position.getRowColumnValueOfPosition(position)) == player.getValue()) {
+            previousPlayer = player.getValue();
+        }
+        return "Successful Move";
+    }
+
+    private void validateCurrentTurn(Player player, int position) {
+
         if (isInValidPosition(position)) {
             throw new InvalidPositionException("Invalid Position. Please choose position value between 1 to 9");
         } else if (isFirstTurn() && isPlayerO(player)) {
@@ -28,11 +36,6 @@ public class GameService {
         } else if (isSamePlayerPlaying(player)) {
             throw new InvalidTurnException(String.format("Player %s's turn now", player.getValue()));
         }
-        if (gameBoard.savePlayerOnPosition(player, Position.getRowColumnValueOfPosition(position)) == player.getValue()) {
-            previousPlayer = player.getValue();
-            message = "Successful Move";
-        }
-        return message;
     }
 
     private boolean isInValidPosition(int position) {
