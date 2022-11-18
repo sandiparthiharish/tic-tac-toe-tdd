@@ -1,5 +1,6 @@
 package com.game.tictactoe.service;
 
+import com.game.tictactoe.domain.Player;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -14,7 +15,7 @@ public class GameServiceTests {
 
         GameService gameService = new GameService();
 
-        assertThat(gameService.playGame('X')).isEqualTo("Successful Move");
+        assertThat(gameService.playGame(Player.X)).isEqualTo("Successful Move");
     }
 
     @Test
@@ -22,6 +23,6 @@ public class GameServiceTests {
 
         GameService gameService = new GameService();
 
-        assertThat(gameService.playGame('O')).isEqualTo("Player X should move first");
+        assertThat(gameService.playGame(Player.O)).isEqualTo("Player X should move first");
     }
 }

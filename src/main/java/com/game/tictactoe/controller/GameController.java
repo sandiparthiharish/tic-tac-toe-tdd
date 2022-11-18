@@ -1,5 +1,6 @@
 package com.game.tictactoe.controller;
 
+import com.game.tictactoe.domain.Player;
 import com.game.tictactoe.service.GameService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ public class GameController {
     }
 
     @PostMapping(value = "/tic-tac-toe/play/{player}")
-    public ResponseEntity<String> PlayGameHandler(@PathVariable(name = "player") char player) {
+    public ResponseEntity<String> PlayGameHandler(@PathVariable(name = "player") Player player) {
 
         return ResponseEntity.status(HttpStatus.OK).body(gameService.playGame(player));
     }
