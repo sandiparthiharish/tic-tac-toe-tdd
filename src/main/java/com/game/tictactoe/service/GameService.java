@@ -35,6 +35,7 @@ public class GameService {
             resetGameBoard();
             return String.format("Player %s won the game", player.getValue());
         } else if (gameBoard.isBoardFull()) {
+            resetGameBoard();
             return "Game is a Tie";
         }
         return "Successful Move";
