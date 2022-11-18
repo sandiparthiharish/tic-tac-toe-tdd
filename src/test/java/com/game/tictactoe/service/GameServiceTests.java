@@ -1,6 +1,7 @@
 package com.game.tictactoe.service;
 
 import com.game.tictactoe.domain.Player;
+import com.game.tictactoe.exception.InvalidPositionException;
 import com.game.tictactoe.exception.InvalidTurnException;
 import com.game.tictactoe.util.GameBoard;
 import org.junit.Before;
@@ -46,5 +47,11 @@ public class GameServiceTests {
         gameService.playGame(Player.X, 2);
 
         assertThat(gameService.playGame(Player.O, 1)).isEqualTo("Successful Move");
+    }
+
+    @Test(expected = InvalidPositionException.class)
+    public void shouldThrowInvalidPositionException() {
+
+        gameService.playGame(Player.X, 0);
     }
 }
