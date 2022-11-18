@@ -9,3 +9,11 @@ group = 'com.game.tictactoe'
 repositories {
     mavenCentral()
 }
+
+dependencies {
+    implementation('org.springframework.boot:spring-boot-starter-web')
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test',
+            'org.junit.vintage:junit-vintage-engine'
+    )
+}
