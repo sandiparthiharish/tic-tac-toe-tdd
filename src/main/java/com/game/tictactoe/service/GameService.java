@@ -10,6 +10,8 @@ public class GameService {
         String message = "Unsuccessful Move";
         if (player == 'X') {
             message = "Successful Move";
+        } else if (player == 'O') {
+            message = "Player X should move first";
         }
         return message;
     }

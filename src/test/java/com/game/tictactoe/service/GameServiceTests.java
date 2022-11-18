@@ -16,4 +16,12 @@ public class GameServiceTests {
 
         assertThat(gameService.playGame('X')).isEqualTo("Successful Move");
     }
+
+    @Test
+    public void isPlayerOMovingFirst() {
+
+        GameService gameService = new GameService();
+
+        assertThat(gameService.playGame('O')).isEqualTo("Player X should move first");
+    }
 }
