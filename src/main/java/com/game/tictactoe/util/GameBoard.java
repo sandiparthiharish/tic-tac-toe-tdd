@@ -10,8 +10,8 @@ import java.util.Arrays;
 @Component
 public class GameBoard {
 
-    private static final int EMPTY_POSITION_ON_BOARD = 0;
     public static final int TOTAL_POSITIONS_ON_BOARD = 9;
+    private static final int EMPTY_POSITION_ON_BOARD = 0;
     private char[][] board;
 
     public void initialize() {

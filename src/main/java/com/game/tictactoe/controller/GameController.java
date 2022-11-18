@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -36,5 +37,14 @@ public class GameController {
                                                   @PathVariable(name = "position") int position) {
 
         return ResponseEntity.status(HttpStatus.OK).body(gameService.playGame(player, position));
+    }
+
+    @Operation(summary = "Reset Tic Tac Toe Game")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Reset successful")})
+    @PutMapping(path = "/tic-tac-toe/reset-game")
+    public ResponseEntity<String> resetGameHandler() {
+
+        return ResponseEntity.status(HttpStatus.OK).body(gameService.resetGameState());
     }
 }

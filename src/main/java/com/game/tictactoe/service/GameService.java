@@ -19,6 +19,12 @@ public class GameService {
         this.gameBoard = gameBoard;
     }
 
+    public String resetGameState() {
+
+        resetGameBoard();
+        return "Reset successful";
+    }
+
     public String playGame(Player player, int position) {
 
         if (isFirstTurn()) {
