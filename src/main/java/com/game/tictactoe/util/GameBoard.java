@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class GameBoard {
 
+    private static final int EMPTY_POSITION_ON_BOARD = 0;
     private final char[][] board = new char[3][3];
 
     public char savePlayerOnPosition(Player player, Position position) {
@@ -15,5 +16,14 @@ public class GameBoard {
 
     public char getPositionValueOnBoard(Position position) {
         return board[position.getRow()][position.getColumn()];
+    }
+
+    public boolean isFirstRowOccupiedBySamePlayer() {
+
+        if (getPositionValueOnBoard(Position.ONE) != EMPTY_POSITION_ON_BOARD) {
+            return (getPositionValueOnBoard(Position.ONE) == getPositionValueOnBoard(Position.TWO) &&
+                    getPositionValueOnBoard(Position.TWO) == getPositionValueOnBoard(Position.THREE));
+        }
+        return false;
     }
 }
