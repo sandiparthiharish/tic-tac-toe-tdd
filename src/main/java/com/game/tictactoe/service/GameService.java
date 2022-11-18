@@ -23,6 +23,11 @@ public class GameService {
 
         validateCurrentTurn(player, position);
         saveCurrentTurn(player, position);
+        return validateGameAndSendResponse(player);
+    }
+
+    private String validateGameAndSendResponse(Player player) {
+
         if (isGameOver()) {
             return String.format("Player %s won the game", player.getValue());
         } else if (gameBoard.isBoardFull()) {
