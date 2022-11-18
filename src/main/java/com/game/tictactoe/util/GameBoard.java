@@ -90,4 +90,13 @@ public class GameBoard {
         }
         return false;
     }
+
+    public boolean isSecondDiagonalOccupiedBySamePlayer() {
+
+        if (getPositionValueOnBoard(Position.THREE) != EMPTY_POSITION_ON_BOARD) {
+            return (getPositionValueOnBoard(Position.THREE) == getPositionValueOnBoard(Position.FIVE) &&
+                    getPositionValueOnBoard(Position.FIVE) == getPositionValueOnBoard(Position.SEVEN));
+        }
+        return false;
+    }
 }
